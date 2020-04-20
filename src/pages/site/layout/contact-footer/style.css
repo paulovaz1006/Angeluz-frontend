@@ -1,0 +1,15 @@
+.bg-contact-footer{
+    background: #af1013;
+}
+.shape {
+    position: absolute;
+    pointer-events: none;
+}
+.shape-top {
+    top: 0;
+    right: 0;
+    left: 0;
+}
+.shape:not([class*=shape-blur]) {
+    overflow: hidden;
+}
