@@ -7,6 +7,9 @@ import RegisterAngeluz from './pages/system/registers/registerAngeluz';
 import Registeruser from './pages/system/registers/registerUser';
 import Dashboard from './pages/system/dashboard';
 import NewCases from './pages/system/newCases';
+import NewCasesDetails from './pages/system/newCases/newCasesDetails';
+import CasesDetails from './pages/system/dashboard/casesDetails';
+import RegisterNewsCase from './pages/system/registerNewsCase';
 
 export default function Routes() {
     return(
@@ -20,6 +23,9 @@ export default function Routes() {
                 <Route path="/cadastro-de-usuario" component={Registeruser} />
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/novos-casos" component={NewCases} />
+                <Route path="/detalhes-caso" component={NewCasesDetails} />
+                <Route path="/meu-caso" component={CasesDetails} />
+                <Route path="/cadastrar-caso" component={RegisterNewsCase} />
             </Switch>
         </BrowserRouter>
     )

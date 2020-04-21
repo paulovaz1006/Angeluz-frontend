@@ -20,7 +20,7 @@ const Dashboard = () => {
                         <p>Usuario:</p>
                         <div className="row justify-content-between px-3">
                             <p>Status</p>
-                            <Link to="">Ver Detalhes</Link>
+                            <Link to="meu-caso">Ver Detalhes</Link>
                         </div>
                     </div>
                     <div className="box-case px-4 py-3">
@@ -30,7 +30,7 @@ const Dashboard = () => {
                         <p>Usuario:</p>
                         <div className="row justify-content-between px-3">
                             <p>Status</p>
-                            <Link to="">Ver Detalhes</Link>
+                            <Link to="meu-caso">Ver Detalhes</Link>
                         </div>
                     </div>
                     <div className="box-case px-4 py-3">
@@ -40,7 +40,7 @@ const Dashboard = () => {
                         <p>Usuario:</p>
                         <div className="row justify-content-between px-3">
                             <p>Status</p>
-                            <Link to="">Ver Detalhes</Link>
+                            <Link to="meu-caso">Ver Detalhes</Link>
                         </div>
                     </div>
                 </div>
