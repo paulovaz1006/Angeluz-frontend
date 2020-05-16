@@ -29,3 +29,18 @@
 .img-profile img{
     border-radius: 60%;
 }
+.btn-alt-secondary {
+    color: #fff!important;
+    background-color: #af1013!important;
+    border-color: #af1013!important;
+}
+.img-avatar {
+    display: inline-block!important;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
+.btn-add{
+    color: #af1013;
+    font-size: 25px;
+}

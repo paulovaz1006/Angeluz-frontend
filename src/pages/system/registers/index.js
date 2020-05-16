@@ -8,7 +8,7 @@ const RegisterType = () => {
     return(
         <div className="logon-container">
             <Link to="/">
-                <img src={logoImg} alt="Heroes" className="herosImg"/>
+                <img src={logoImg} alt="Heroes" className="AngeluzImg"/>
             </Link>
             <div className="container-form p-0">
                 <section className="row m-0 text-center">

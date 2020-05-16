@@ -9,7 +9,7 @@ export default function Register() {
     return(
         <div className="container text-center">
              <Link to="/">
-                <img src={logoImg} alt="Heroes" className="herosImg"/>
+                <img src={logoImg} alt="Heroes" className="AngeluzImg"/>
              </Link>
              <div className="container-form">
                 <section>

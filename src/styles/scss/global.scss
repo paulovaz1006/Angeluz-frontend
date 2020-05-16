@@ -8,7 +8,7 @@
 }
 body{
     font: 400 14px Roboto, sans-serif;
-    background: #f0f0f5;
+    background-color: #f0f2f5;
     -webkit-font-smoothing: antialiased;
 }
 h1 {
@@ -73,11 +73,16 @@ button{
     font-weight: 500;
     transition: opacity 0.2s;
     &:hover{
-        opacity: 0.8;
+        color: #41414d;
+        opacity: 0.9;
+        text-decoration: none;
     }
     & svg{
        margin-right: 8px;
     }
+}
+.bg-secundary-angeluz{
+    background-color: #f3b838!important;
 }
 .btn-secundary-angeluz{
     background: #f3b838;
@@ -91,6 +96,9 @@ button{
         text-decoration: none;
         color: #fff;
     }
+}
+.bg-primary-angeluz{
+    background: #af1013!important;
 }
 .btn-primary-angeluz{
     background: #af1013;
@@ -106,10 +114,39 @@ button{
         opacity: 0.8;
     }
 }
+.bg-thirty-angeluz{
+    background-color: #009688!important;
+}
 #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem;
 }
 .title-system{
-    font-size: 28px;
-    margin-left: 10px;
+    font-size: 36px;
+    color: #4a4a4a;
+    font-weight: 600;
+}
+.activeLink{
+    color: #ca1619!important;
+}
+label,
+.label-title{
+    font-size: 16px;
+    font-weight: 500;
+    color: #404040;
+}
+a{
+    &:hover{
+        text-decoration: none!important;
+    }
+    .block{
+        &:hover{
+            text-decoration: none!important;
+        }   
+    }
+}
+.modal{
+    background:#0000008f;
+}
+.btn-alt-primary {
+    background-color: #9acbf3!important;    
 }

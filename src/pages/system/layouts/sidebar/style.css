@@ -9,6 +9,8 @@
     -moz-transition: margin .25s ease-out;
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
+    box-shadow: 0px 0px 15px 0px #dee2e6;
+    max-width: 240px;
   }
   
   #sidebar-wrapper .sidebar-heading {
@@ -22,6 +24,15 @@
   
   #page-content-wrapper {
     min-width: 100vw;
+    background: #f6f6f6;
+  }
+  .list-group-item{
+    color: #898989;
+    font-weight: 400;  
+  }
+  .list-group-item-action:focus, 
+  .list-group-item-action:hover{
+    color: #ca1619!important;
   }
   @media (min-width: 768px) {
     #sidebar-wrapper {
@@ -33,4 +44,10 @@
       width: 100%;
     }
   }
+   .border-perfil{
+    border-radius: 60%!important;
+   }
+   .content-side-user{
+    background: linear-gradient(45deg, #560b0c,#731012, #ca1619);
+   }
   

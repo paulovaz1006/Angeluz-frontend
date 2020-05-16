@@ -1,3 +1,10 @@
 .max-logo{
-    max-width:200px
+    max-width:200px;
+    z-index:9;
+}
+.bg-header-gradient{
+    background: linear-gradient(0deg, #e0e0e0, #ffffff);
+}
+.navbar-nav{
+    margin-left: 40%;
 }

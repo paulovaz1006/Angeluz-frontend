@@ -10,7 +10,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const Login = () => {
-    const [ id, setId ]= useState('');
+    const [ email, setEmail ]= useState('');
     const [ password, setPassword ]= useState('');
     const [state, setState] = React.useState({
         checkedA: true,
@@ -21,10 +21,10 @@ const Login = () => {
 
       const history = useHistory();
 
-      const loga = () => {
+      const loga = (e) => {
+        e.preventDefault();
         history.push('/dashboard');
       }
-    
     // const history = useHistory('');
 
     // async function handleLogin(e) {
@@ -42,9 +42,9 @@ const Login = () => {
     // }
 
     return(
-        <div className="logon-container">
-             <Link to="/">
-                <img src={logoImg} alt="Heroes" className="herosImg"/>
+        <div className="logon-container p-4 mt-4">            
+             <Link to="/" className="mt-4">
+                <img src={logoImg} alt="Heroes" className="AngeluzImg mt-4"/>
              </Link>
              <div className="container-form">
                 <section className="form">
@@ -64,8 +64,8 @@ const Login = () => {
                     </div>
                     <form>
                         <input placeholder="Seu E-mail"
-                                value={id}
-                                onChange={e => setId(e.target.value)} />
+                                value={email}
+                                onChange={e => setEmail(e.target.value)} />
                         <input placeholder="Sua Senha"
                                 value={password}
                                 onChange={e => setPassword(e.target.value)} />
@@ -77,9 +77,7 @@ const Login = () => {
                                 label="Lembrar Senha"
                                 className="checkItem"
                             />
-                            <Link className="back-link" to="/register">
-                            Esqueceu a Senha?
-                        </Link>
+                            <Link className="back-link" to="/register">Esqueceu a Senha?</Link>
                         </div>
                         <button className="button" type="submit" onClick={loga}>Login</button>
                         <Link className="back-link" to="/tipo-de-cadastro">
@@ -89,7 +87,7 @@ const Login = () => {
                     </form>
                 </section>
             </div>
-        </div>
+            </div>
     )
 }
 

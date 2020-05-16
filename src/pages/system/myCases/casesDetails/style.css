@@ -4,18 +4,19 @@
     grid-column-gap: 12px;
 }
 .box-new-case{
-    background-color: #eee;
+    background-color: #fff;
     border-radius: 6px;
     margin-top: 12px;
     display: flex;
     flex-direction: row;
     position: relative;
+    box-shadow: 0px 5px 10px 1px #d0d0d0;
 }
 .box-new-case a{
-    color: #333;
+    color: #ca1619;
 }
 .box-new-case a:hover{
-    color: #333;
+    color: #7e0608;
     text-decoration: none;
 }
 .icon-trash{

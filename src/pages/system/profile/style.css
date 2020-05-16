@@ -1,0 +1,23 @@
+.btn-alt-danger {
+    color: #af1310!important;
+    background-color: #fae9e8!important;
+    border-color: #fae9e8!important;
+}
+.btn-alt-info {
+    color: #13646e!important;
+    background-color: #e3f4fc!important;
+    border-color: #e3f4fc!important;
+}
+.btn-alt-primary {
+    color: #125a96!important;
+    background-color: #c8e2f8!important;
+    border-color: #c8e2f8!important;
+}
+.btn-alt-warning {
+    color: #a87e00!important;
+    background-color: #fcf7e6!important;
+    border-color: #fcf7e6!important;
+}
+.bg-transparent {
+    background-color: transparent!important;
+}
