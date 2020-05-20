@@ -79,6 +79,21 @@ export default function Register() {
                                     value={nome}
                                     onChange={e => setNome(e.target.value)}/>
                             </div>
+                            <div className="col col-md-6">
+                                <input placeholder="Senha"
+                                    value={nome}
+                                    onChange={e => setNome(e.target.value)}/>
+                            </div>
+                            <div className="col col-md-6">
+                                <input placeholder="Repita a Senha"
+                                    value={nome}
+                                    onChange={e => setNome(e.target.value)}/>
+                            </div>
+                            <div className="col col-md-12">
+                                <input placeholder="E-mail"
+                                    value={nome}
+                                    onChange={e => setNome(e.target.value)}/>
+                            </div>
                         </div>
                         <div className="row justify-content-center flex-column align-items-center">
                             <div className="col-md-4">

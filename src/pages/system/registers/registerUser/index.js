@@ -1,34 +1,94 @@
 import React, { useState } from 'react';
-import logoImg from '../../../../assets/images/logo.png';
+import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import logoImg from '../../../../assets/images/logo.png';
 import './style.css'
+import 'react-toastify/dist/ReactToastify.min.css'; 
 
 export default function Register() {
-    const [nome, setNome] = useState('');
 
+    const [fullName, setName] = useState('');
+    const [nationality, setNationality] = useState('');
+    const [civilStatus, setCivilStatus] = useState('');
+    const [occupation, setOccupation] = useState('');
+    const [rg, setRg] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [address, setAddress] = useState('');
+    const [number, setNumber] = useState('');
+    const [district, setDistrict] = useState('');
+    const [zipCode, setZipCode] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [password, setPassword] = useState('');
+    const [repeatPassword, setRepeatPassword] = useState('');
+    const [email, setEmail] = useState('');
+
+    const history = useHistory();
+
+    const registerUser = async (e) => {
+        e.preventDefault();
+
+        let data = {
+            full_name: fullName, 
+	        nationality: nationality, 
+	        civil_status: civilStatus, 
+	        occupation: occupation, 
+	        rg: rg, 
+	        cpf: cpf, 
+	        address: address,
+	        number: number,
+	        district: district,
+	        zip_code: zipCode,
+	        city: city,
+	        state: state,
+	        type_user: 2,
+	        password: password,
+	        email: email
+        }
+        console.log(data)
+        toast.success('Cadastro realizado com sucesso, você será redirecionado para a tela de login');
+
+        setTimeout(() => {
+            history.push('/login')
+        }, 6000)
+        
+
+        // try{
+        //     api.post('/cadastro-usuario', data)
+        //     history.push('/login')
+        // } catch {
+        //     (error) => {
+        //         toast.error(error.message)
+        //     }            
+        // }        
+    }
+   
     return(
         <div className="container text-center">
+            <ToastContainer />
              <Link to="/">
                 <img src={logoImg} alt="Heroes" className="AngeluzImg"/>
              </Link>
              <div className="container-form">
                 <section>
                     <h1>Cadastro de Angeluz</h1>                   
-                    <form>
+                    <form onSubmit={registerUser}>
                         <div className="row">
                             <div className="col col-md-6">
                                 <input className="form-control" placeholder="Nome Completo"
-                                value={nome}
-                                onChange={e => setNome(e.target.value)}/>
+                                 value={fullName}
+                                 onChange={e => setName(e.target.value)}/>
                             </div>
                             <div className="col col-md-6">
                                 <input className="form-control" placeholder="Nacionalidade"
-                                    value={nome}
-                                    onChange={e => setNome(e.target.value)}/>
+                                    value={nationality}
+                                    onChange={e => setNationality(e.target.value)}/>
                             </div>
                             <div className="col col-md-6">
-                                <select className="form-control" id="exampleFormControlSelect1">
+                                <select className="form-control" id="exampleFormControlSelect1"
+                                    value={civilStatus}
+                                    onChange={e => setCivilStatus(e.target.value)}>
                                     <option>Estado Civil</option>
                                     <option>Casado</option>
                                     <option>Solteiro</option>
@@ -37,48 +97,63 @@ export default function Register() {
                             </div>
                             <div className="col col-md-6">
                             <input placeholder="Profissão"
-                                    value={nome}
-                                    onChange={e => setNome(e.target.value)}/>
+                                    value={occupation}
+                                    onChange={e => setOccupation(e.target.value)}/>
                             </div>
                             <div className="col col-md-6">
                                 <input placeholder="RG"
-                                    value={nome}
-                                    onChange={e => setNome(e.target.value)}/>
+                                    value={rg}
+                                    onChange={e => setRg(e.target.value)}/>
                             </div>
                             <div className="col col-md-6">
                                 <input placeholder="CPF"
-                                    value={nome}
-                                    onChange={e => setNome(e.target.value)}/>
+                                    value={cpf}
+                                    onChange={e => setCpf(e.target.value)}/>
                             </div>
                             <div className="col col-md-6">
                                 <input placeholder="Endereço"
-                                    value={nome}
-                                    onChange={e => setNome(e.target.value)}/>
+                                    value={address}
+                                    onChange={e => setAddress(e.target.value)}/>
                             </div>
                             <div className="col col-md-6">
                                 <input placeholder="Número"
-                                    value={nome}
-                                    onChange={e => setNome(e.target.value)}/>
+                                    value={number}
+                                    onChange={e => setNumber(e.target.value)}/>
                             </div>
                             <div className="col col-md-6">
                                 <input placeholder="Bairro"
-                                    value={nome}
-                                    onChange={e => setNome(e.target.value)}/>
+                                    value={district}
+                                    onChange={e => setDistrict(e.target.value)}/>
                             </div>
                             <div className="col col-md-6">
                                 <input placeholder="CEP"
-                                    value={nome}
-                                    onChange={e => setNome(e.target.value)}/>
+                                    value={zipCode}
+                                    onChange={e => setZipCode(e.target.value)}/>
                             </div>
                             <div className="col col-md-6">
                                 <input placeholder="Cidade"
-                                    value={nome}
-                                    onChange={e => setNome(e.target.value)}/>
+                                    value={city}
+                                    onChange={e => setCity(e.target.value)}/>
                             </div>
                             <div className="col col-md-6">
                                 <input placeholder="Estado"
-                                    value={nome}
-                                    onChange={e => setNome(e.target.value)}/>
+                                    value={state}
+                                    onChange={e => setState(e.target.value)}/>
+                            </div>
+                            <div className="col col-md-6">
+                                <input placeholder="Senha"
+                                    value={password}
+                                    onChange={e => setPassword(e.target.value)}/>
+                            </div>
+                            <div className="col col-md-6">
+                                <input placeholder="Repita a Senha"
+                                    value={repeatPassword}
+                                    onChange={e => setRepeatPassword(e.target.value)}/>
+                            </div>
+                            <div className="col col-md-12">
+                                <input placeholder="E-mail"
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)}/>
                             </div>
                         </div>
                         <div className="row justify-content-center flex-column align-items-center">
