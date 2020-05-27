@@ -16,7 +16,6 @@ import { Link } from 'react-router-dom'
 import './style.css';
 
 const Dashboard = () => {
-
     return(
         <div id="page-container" className="sidebar-o enable-page-overlay side-scroll page-header-modern main-content-boxed">            
             <SideBar />

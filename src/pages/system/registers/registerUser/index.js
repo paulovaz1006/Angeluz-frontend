@@ -11,111 +11,124 @@ import './style.css'
 import 'react-toastify/dist/ReactToastify.min.css'; 
 
 const Register = () => {
-        const [ phone, setPhone ] = useState('');
+    const history = useHistory();
+
+    const [ phone, setPhone ] = useState('');
+    const [ rg, setRg ] = useState('');
+    const [ cpf, setCpf ] = useState('');
+    const [ zip_code, setZipCode ] = useState('');
+    const [ cellphone, setCellphone ] = useState('');    
+    const [ password, setPassword ] = useState('');  
+    const [ repeatPassword, setRepeatPassword ] = useState('');    
+    
+    const initialValues = {
+        full_name:'',
+        nationality:'',
+        civil_status:'',
+        occupation:'',
+        rg: '',
+        cpf:'',
+        address:'',
+        number:'',
+        district:'',
+        zip_code:'',
+        city:'',
+        state:'',
+        type_user: 2,
+        password:'',
+        email:'',
+        phone: '',
+        cellphone: ''            
+    }
+
+    const validations = yup.object().shape({
+        full_name: yup.string().required('Campo Nome Completo é Obrigatório'),
+        nationality: yup.string().required('Campo Nacionalidade é Obrigatório'),
+        civil_status: yup.string().required('Campo Estado Civil é Obrigatório'),
+        occupation: yup.string().required('Campo Profissão é Obrigatório'),            
+        address: yup.string().required('Campo Endereço é Obrigatório'),
+        number: yup.string().required('Campo Número é Obrigatório'),
+        district: yup.string().required('Campo Bairro é Obrigatório'),
+        city: yup.string().required('Campo Cidade é Obrigatório'),
+        state: yup.string().required('Campo Estado é Obrigatório'),
+        email: yup.string().required('Campo E-mail é Obrigatório')      
+    });
+
+    const validInputsMask = (form) => {
+        let inputs = document.querySelectorAll('.inputRequired', form); 
+        let count = 0;
+
         
-        // const [nationality, setNationality] = useState('');
-        // const [civilStatus, setCivilStatus] = useState('');
-        // const [occupation, setOccupation] = useState('');
-        // const [rg, setRg] = useState('');
-        // const [cpf, setCpf] = useState('');
-        // const [address, setAddress] = useState('');
-        // const [number, setNumber] = useState('');
-        // const [district, setDistrict] = useState('');
-        // const [zipCode, setZipCode] = useState('');
-        // const [city, setCity] = useState('');
-        // const [state, setState] = useState('');
-        
-        // const [repeatPassword, setRepeatPassword] = useState('');
-        // const [email, setEmail] = useState('');
-    
-        // const history = useHistory();
-    
-        // const registerUser = async (e) => {
-        //     e.preventDefault();
-    
-        //     const data = {
-        //         full_name: fullName, 
-        //         nationality: nationality, 
-        //         civil_status: civilStatus, 
-        //         occupation: occupation, 
-        //         rg: rg, 
-        //         cpf: cpf, 
-        //         address: address,
-        //         number: number,
-        //         district: district,
-        //         zip_code: zipCode,
-        //         city: city,
-        //         state: state,
-        //         type_user: 2,
-        //         password: password,
-        //         email: email
-        //     }
-    
-        //     try{
-        //         const response = await api.post('cadastro-usuario', data)
-        //         toast.success('Cadastro realizado com sucesso, você será redirecionado para a tela de login', {
-        //             onClose: () => history.push('/login')
-        //         });
-        //     } catch(error) {
-        //         toast.success(error.response.data.message);
-        //     }        
-        // }
-        const validations = yup.object().shape({
-            full_name: yup.string().required('Campo Nome Completo é Obrigatório'),
-            nationality: yup.string().required('Campo Nacionalidade é Obrigatório'),
-            civil_status: yup.string().required('Campo Estado Civil é Obrigatório'),
-            occupation: yup.string().required('Campo Profissão é Obrigatório'),
-            rg: yup.string().required('Campo RG é Obrigatório'),
-            cpf: yup.string().required('Campo CPF é Obrigatório'),
-            address: yup.string().required('Campo Endereço é Obrigatório'),
-            number: yup.string().required('Campo Número é Obrigatório'),
-            district: yup.string().required('Campo Bairro é Obrigatório'),
-            zip_code: yup.string().required('Campo CEP é Obrigatório'),
-            city: yup.string().required('Campo Cidade é Obrigatório'),
-            state: yup.string().required('Campo Estado é Obrigatório'),
-            email: yup.string().required('Campo E-mail é Obrigatório'),
-            password: yup.string().min(6).required('No minimo 6 caracteres'),                      
-            repeat_password: yup.string().min(6).required('Campo Obrigatório'), 
-            phone: yup.string().required('Campo Telefone é Obrigatório')            
+        inputs.forEach((element) => {
+            let textRequired = element.getAttribute('data-required');
+
+            if (element.value === '') {
+                element.nextElementSibling.innerHTML = `Campo ${textRequired} é obrigatório`;
+                count++;
+            } else if(element.nextElementSibling !== null) {
+                element.nextElementSibling.innerHTML = ``;
+            }
         });
 
-        const handleSubmit = (values) => {
-            console.log(values)
+        return (count === 0) ? true : false;
+    }
+
+    const validationPassword = () => {
+        let password = document.querySelector('#password');
+        let repeatPassword = document.querySelector('#repeat_password');
+        let count = 0;
+
+        if (password.value !== repeatPassword.value) {
+            repeatPassword.nextElementSibling.innerHTML = 'Valor do Campo é diferente do campo Senha';
+            repeatPassword.value = '';
+            count++;
+        } else {
+            repeatPassword.nextElementSibling.innerHTML = '';
         }
 
-        const initialValues = {
-            full_name:'',
-            nationality:'',
-            civil_status:'',
-            occupation:'',
-            rg:'',
-            cpf:'',
-            address:'',
-            number:'',
-            district:'',
-            zip_code:'',
-            city:'',
-            state:'',
-            type_user: 2,
-            password:'',
-            email:'',
-            phone: ''
-        }
+        return (count === 0) ? true : false;
+    }    
+
+    const registerUser = async (values) => {
+        if (validInputsMask('#registerUser') && validationPassword()) {
+            values.rg = rg.replace(/[^\d]+/g,'');
+            values.cpf = cpf.replace(/[^\d]+/g,'');
+            values.zip_code = zip_code.replace(/[^\d]+/g,'');
+            values.phone = phone.replace(/[^\d]+/g,'');
+            values.cellphone = cellphone.replace(/[^\d]+/g,'');
+            values.password = password;
+           
+            try{
+                await api.post('cadastro-usuario', values)
+                toast.success('Cadastro realizado com sucesso, você será redirecionado para a tela de login', {
+                    autoClose: 5000,                    
+                });
+
+                setTimeout(() => {
+                    history.push('/login')
+                }, 5000);
+            } catch(error) {
+                toast.error(error.response.data.message);
+            }  
+        }                      
+    }
 
     return(
         <div className="container text-center">
-            <ToastContainer />
+            <ToastContainer 
+                autoClose={5000}
+            />
             <Link to="/">
                 <img src={logoImg} alt="Heroes" className="AngeluzImg"/>
             </Link>
             <div className="container-form">
                 <section>
-                    <h1>Cadastro de Angeluz</h1>                   
+                    <h1>Cadastro de Humano</h1>                   
                     <Formik 
                         initialValues={initialValues}
-                        onSubmit={(values) => handleSubmit(values)} 
+                        onSubmit={(values) => registerUser(values)} 
                         validationSchema={validations}>
-                        <Form autoComplete="off" className="form">
+                        <Form autoComplete="off" className="form" id="registerUser">
                             <div className="row">
                                 <div className="col col-md-6">
                                     <Field className="form-control form-field"
@@ -140,7 +153,6 @@ const Register = () => {
                                 <div className="col col-md-6">                                    
                                     <Field as="select" className="form-control"
                                         name="civil_status">
-                                        <option>Selecione</option>
                                         <option>Estado Civil</option>
                                         <option>Casado</option>
                                         <option>Solteiro</option>
@@ -165,54 +177,69 @@ const Register = () => {
                                     <Field
                                         render={() => (
                                             <InputMask
-                                                mask="(99) 9999-9999"                                                 
                                                 name="phone" 
-                                                placeholder="Telefone"
                                                 type="text"
-                                                onChange={(e) => {
-                                                    setPhone(e.target.value)
-                                                }}
+                                                placeholder="Telefone"
+                                                mask="(99) 9999-9999"                                                  
+                                                data-required="Telefone"
+                                                className="inputRequired"
+                                                onChange={(e) => setPhone(e.target.value)}
                                                 value={phone}
                                             />
                                           )}                                        
                                     />
-                                    <ErrorMessage 
-                                        component="span" 
-                                        name="phone" 
-                                        className="text-danger d-block text-left mt-1"/>
+                                    <span className="text-danger d-block text-left mt-1"> </span>
                                 </div>                                
                                 <div className="col col-md-6">
-                                    <Field name="cellphone" 
+                                    <Field 
                                         render={() => (
                                             <InputMask
-                                                mask="(99) 99999-9999"
-                                                required 
+                                                name="cellphone" 
+                                                type="text"
                                                 placeholder="Celular"
+                                                mask="(99) 99999-9999"                                                
+                                                data-required="Celular"   
+                                                className="inputRequired"                                             
+                                                onChange={(e) => setCellphone(e.target.value)}
+                                                value={cellphone}
                                             />
                                           )}
                                     />
-                                    <ErrorMessage 
-                                        component="span" 
-                                        name="cellphone" 
-                                        className="text-danger d-block text-left mt-1"/>
+                                    <span className="text-danger d-block text-left mt-1"> </span>
                                 </div>                                
                                 <div className="col col-md-6">
-                                    <Field placeholder="RG"
-                                        type="text"
-                                        name="rg" />
-                                    <ErrorMessage 
-                                        component="span" 
-                                        name="rg" 
-                                        className="text-danger d-block text-left mt-1"/>
+                                    <Field
+                                        render={() => (
+                                            <InputMask
+                                                name="rg" 
+                                                type="text"
+                                                placeholder="RG"
+                                                mask="99999999-9"                                                 
+                                                data-required="RG"
+                                                className="inputRequired"
+                                                onChange={(e) => setRg(e.target.value)}
+                                                value={rg}
+                                            />
+                                        )}    
+                                    />
+                                    <span className="text-danger d-block text-left mt-1"> </span>
                                 </div>
                                 <div className="col col-md-6">
-                                    <Field placeholder="CPF"
-                                        type="text"
-                                        name="cpf"/>
-                                    <ErrorMessage 
-                                        component="span" 
-                                        name="cpf" 
-                                        className="text-danger d-block text-left mt-1"/>
+                                    <Field
+                                        render={() => (
+                                            <InputMask
+                                                name="cpf" 
+                                                type="text"
+                                                placeholder="CPF"
+                                                mask="999.999.999-99"                                                 
+                                                data-required="RG"
+                                                className="inputRequired"
+                                                onChange={(e) => setCpf(e.target.value)}
+                                                value={cpf}
+                                            />
+                                        )}   
+                                    />
+                                    <span className="text-danger d-block text-left mt-1"> </span>
                                 </div>
                                 <div className="col col-md-6">
                                     <Field placeholder="Endereço"
@@ -242,13 +269,20 @@ const Register = () => {
                                         className="text-danger d-block text-left mt-1"/>
                                 </div>
                                 <div className="col col-md-6">
-                                    <Field placeholder="CEP"
-                                        type="text"
-                                        name="zip_code" />
-                                     <ErrorMessage 
-                                        component="span" 
-                                        name="zip_code" 
-                                        className="text-danger d-block text-left mt-1"/>
+                                    <Field
+                                        render={() => (
+                                            <InputMask
+                                                name="zip_code" 
+                                                type="text"
+                                                placeholder="CEP"
+                                                mask="99999-999"                                                 
+                                                data-required="CEP"
+                                                className="inputRequired"
+                                                onChange={(e) => setZipCode(e.target.value)}
+                                                value={zip_code}
+                                            />
+                                        )}/>
+                                     <span className="text-danger d-block text-left mt-1"> </span>
                                 </div>
                                 <div className="col col-md-6">
                                     <Field placeholder="Cidade"
@@ -269,23 +303,38 @@ const Register = () => {
                                         className="text-danger d-block text-left mt-1"/>
                                 </div>
                                 <div className="col col-md-6">
-                                    <Field placeholder="Senha"
-                                        className="Form-Field"
-                                        name="password"
-                                        type="password"/>
-                                    <ErrorMessage 
-                                        component="span" 
-                                        name="password" 
-                                        className="text-danger d-block text-left mt-1"/>
+                                    <Field 
+                                        render={() => (
+                                            <InputMask
+                                                name="password" 
+                                                type="password"
+                                                placeholder="Senha"                                               
+                                                data-required="Senha"
+                                                className="Form-Field inputRequired"
+                                                onChange={(e) => setPassword(e.target.value)}
+                                                value={password}
+                                                id="password"
+                                            />
+                                        )}
+                                    />
+                                    <span className="text-danger d-block text-left mt-1"> </span>
                                 </div>
                                 <div className="col col-md-6">
-                                    <Field placeholder="Repita a Senha"
-                                        name="repeat_password"
-                                        type="password"/>
-                                    <ErrorMessage 
-                                        component="span" 
-                                        name="repeat_password" 
-                                        className="text-danger d-block text-left mt-1"/>
+                                    <Field 
+                                        render={() => (
+                                            <InputMask
+                                                name="repeat_password" 
+                                                type="password"
+                                                placeholder="Repita a Senha"                                               
+                                                data-required="Repita a Senha"
+                                                className="Form-Field inputRequired"
+                                                id="repeat_password"
+                                                onChange={(e) => setRepeatPassword(e.target.value)}
+                                                value={repeatPassword}
+                                            />
+                                        )}
+                                    />
+                                    <span className="text-danger d-block text-left mt-1"> </span>
                                 </div>
                                 <div className="col col-md-12">
                                     <Field placeholder="E-mail"

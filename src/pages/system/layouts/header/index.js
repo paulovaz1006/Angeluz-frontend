@@ -15,11 +15,7 @@ const Header = () => {
         const sidebar = document.querySelector('#sidebar');
         const sideScroll = document.querySelector('#page-container.side-scroll #sidebar');
         const pageContaier = document.querySelector('#page-container.sidebar-o');
-        let hiddenMenu = sidebar.getAttribute('data-hidden');
-        console.log(sidebar)
-        console.log(sideScroll)
-        console.log(pageContaier)
-        console.log(hiddenMenu)
+        let hiddenMenu = sidebar.getAttribute('data-hidden');  
         if (hiddenMenu === 'false') {
             sidebar.style.width = '0px';
             sideScroll.style.overflowY = 'hidden';
@@ -56,7 +52,7 @@ const Header = () => {
                             </div>
                         </button>                        
                     </div>
-                    <div className="btn-group" role="group">
+                    <div className="btn-group d-none" role="group">
                         <button type="button" className="btn btn-rounded btn-dual-secondary" id="page-header-notifications" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <FaFlag />
                             <span className="badge badge-primary badge-pill">5</span>

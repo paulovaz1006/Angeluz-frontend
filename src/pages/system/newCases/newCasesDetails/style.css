@@ -7,3 +7,28 @@
     background-color: #f0f2f5!important;
     border-color: #cbd2dd!important;
 }
+.list-case-detail{
+    list-style-position: inside;
+}
+.list-case-detail li{
+    list-style-position: inside;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #fff;
+    padding: 5px 10px;
+}
+.list-case-detail li:nth-child(odd){
+    background-color: #f0f2f5;
+}
+.list-case-detail li span{
+    margin-right: 10px;
+}
+.list-case-detail li p{
+    margin-bottom: 0;
+}
+.photo-profile{
+    border-radius: 60%;
+    width: 280px;
+    height: 270px!important;
+}

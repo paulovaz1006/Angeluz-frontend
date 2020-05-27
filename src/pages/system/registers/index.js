@@ -19,9 +19,9 @@ const RegisterType = () => {
                         </Link>
                     </div>
                     <div className="col-md-6 text-center container-type">
-                        <h4 className="mb-4">Você quer ser um <br /> Usuario?</h4>
+                        <h4 className="mb-4">Você quer ser um <br /> Humano?</h4>
                         <Link className="btn-primary-angeluz" to="/cadastro-de-usuario">
-                            Quero ser um usuario
+                            Quero ser um Humano
                         </Link>
                     </div>
                     <Link to="/login" className="back-link w-100 d-inline-block mb-4">

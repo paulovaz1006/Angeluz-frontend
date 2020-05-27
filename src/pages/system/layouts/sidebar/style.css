@@ -1,6 +1,9 @@
  body {
     overflow-x: hidden;
   }
+  .img-link{
+    min-height: 130px;
+  }
   
   #sidebar-wrapper {
     min-height: 100vh;
@@ -34,6 +37,9 @@
   .list-group-item-action:hover{
     color: #ca1619!important;
   }
+  .border-radius-0 {
+    border-radius: 0!important;
+}
   @media (min-width: 768px) {
     #sidebar-wrapper {
       margin-left: 0;

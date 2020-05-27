@@ -24,15 +24,16 @@ export default function Routes() {
                 {/* Rotas do Sistema */}
                 <Route path="/login" component={Login} />
                 <Route path="/tipo-de-cadastro" component={RegisterType} />
+                
                 <Route path="/cadastro-de-angeluz" component={RegisterAngeluz} />
                 <Route path="/cadastro-de-usuario" component={Registeruser} />
-                <Route path="/perfil" activeClassName="activeLink" component={Profile} />            
-                <Route path="/dashboard" activeClassName="activeLink" component={Dashboard} />
-                <Route path="/meus-casos" activeClassName="activeLink" component={MyCases} />
-                <Route path="/acompanhe-seu-caso" activeClassName="activeLink" component={FollowCase} />  
-                <Route path="/novos-casos" activeClassName="activeLink" component={NewCases} />
-                <Route path="/detalhes-caso" activeClassName="activeLink" component={NewCasesDetails} />                
-                <Route path="/cadastrar-caso" activeClassName="activeLink" component={RegisterNewCase} />
+                <Route path="/perfil" component={Profile} />            
+                <Route path="/dashboard" component={Dashboard} />
+                <Route path="/meus-casos" component={MyCases} />
+                <Route path="/acompanhe-seu-caso/:id" component={FollowCase} />  
+                <Route path="/novos-casos" component={NewCases} />
+                <Route path="/detalhes-caso/:id" component={NewCasesDetails} />                
+                <Route path="/cadastrar-caso" component={RegisterNewCase} />
             </Switch>
         </BrowserRouter>
     )

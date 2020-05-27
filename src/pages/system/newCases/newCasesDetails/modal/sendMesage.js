@@ -1,6 +1,6 @@
 import React from 'react';
 
-const modalSendMessage = () => {    
+const ModalSendMessage = () => {    
 
     const closeModal = () => {
         const modalClose = document.querySelector('#modalSendMessage');
@@ -37,4 +37,4 @@ const modalSendMessage = () => {
     )
 }
 
-export default modalSendMessage;
+export default ModalSendMessage;
